@@ -2,7 +2,6 @@ from MotorModule import Motor
 import KeyPressModule as kp
 import ColorModule as cm
 import ContourModule as cnm
-import SerialModule as sm
 from time import sleep
 import cv2
 import numpy as np

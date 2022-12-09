@@ -93,12 +93,14 @@ param = curve_fit(first_order_tf_control, data['tempo'], data['velocidade'])
 
 # Visão Computacional
 - Em seguida usando o ColorModule.py foi possível filtrar as cores na tela, usando o sistema HSV, o filtro HVS selecionou apenas a cor azul, conforme a imagem abaixo
-- ![image](https://user-images.githubusercontent.com/75706345/206336636-124bc9f5-95f9-49e0-a3b9-a82c5599bb81.png)
+![image](https://user-images.githubusercontent.com/75706345/206336636-124bc9f5-95f9-49e0-a3b9-a82c5599bb81.png)
 - Para pegar apenas o objeto desejado, os algoritmos de visão computacional podem selecionar a maior área das cores filtradas na imagem, como o objeto se destaca, ele será na grande parte das vezes o objeto azul de maior área da imagem. Pode-se notar nos logs da imagem os parâmetros encontrados para o filtro HSV que serão usados no código principal para filtrar as cores da imagem da câmera, possibilitando fazer um tracking de apenas objetos azuis.
 - Segue o link da biblioteca que foi baixada para fazer a filtragem de cores: https://github.com/Nagi0/CV-carro-autonomo-controle/blob/main/run/ColorModule.py
 - Em seguida os contornos da imagem filtrada é extraído para fazer um tracking do objeto
 - Para fazer o carrinho seguir o objeto foi feito um algoritmo P+I para que ele siga o objeto no eixo X, o algoritmo visa centralizar o objeto na frente da imagem
+
 ![image](https://user-images.githubusercontent.com/75706345/206336750-eb56bc22-7d85-45e7-b719-2c082c96ef48.png)
+
 Na imagem há uma linha vertical rosa que representa o centro da imagem, ela é o set-point, o carrinho irá tentar manter o objeto detectado (marcado pelo quadrado verde) em cima dessa linha, centralizando o carrinho da frente do objeto. A linha horizontal roda mostra distância do centro do objeto detectado do centro da imagem. Também é possível estimar a área do objeto na imagem, isso é usado no código principal para ver o quão perto o objeto está da câmera do carrinho. Caso a área seja pequena a distância é grande, a medida que a área do objeto detectado aumenta, siginifica que ele está chegando mais perto.
 
 Foram usadas as bibliotecas Opencv (cv2) e outras bibliotecas baixadas online chamadas ObjectDetectionModule.py e ContourModule.py para fazer os algoritmos de visão cumpuational para detectar os objetos das cores desejadas que rodam no código principal.

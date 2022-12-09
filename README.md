@@ -35,17 +35,7 @@ A alimentação é fornecida pela fonte 12V, 2.2A
 - https://github.com/Nagi0/CV-carro-autonomo-controle/blob/main/run/KeyPressModule.py
 
 # Modelagem do Motor DC
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-import openpyxl
-import numpy as np
-import datetime
-from scipy.optimize import curve_fit
-from scipy.signal import TransferFunction, lti
-import control
-import plotly.express as px
+![image](https://user-images.githubusercontent.com/75706345/206729643-8c4d128e-3269-41cb-819b-31fbb0675adc.png)
 
 ### Data Import
 - Os dados foram coletados usando os módulos MotorModule.py(que foi mencionada anteriormente) e outro código feito no python para ler a porta serial do Arduino chamado read_serial_data.py. Usando um arduino nano conectado na porta USB do raspberry pi e um encoder conectado a esse arduino nano, foi medida a velocidade e os insantes de tempo pelo arduino nano, com uma amostragem de 0.1 segundos. Esses dados foram então enviados ao raspberry pi pela comunicação serial. Finalmente, eles foram registrados em um arquivo CSV, que pode ser aberto no excel.

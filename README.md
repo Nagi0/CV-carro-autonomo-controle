@@ -110,16 +110,17 @@ Foram usadas as bibliotecas Opencv (cv2) e outras bibliotecas baixadas online ch
 - ContourModule.py: https://github.com/Nagi0/CV-carro-autonomo-controle/blob/main/run/ContourModule.py
 
 # Rodando o Código Principal main.py
-Essa sessão irá cobrir como todos as bibliotecas criadas e baixadas anteriormente atuam para que o carrinho faça o tracking do objeto desejado.
+Essa sessão irá cobrir como todos as bibliotecas criadas e baixadas anteriormente atuam para que o carrinho faça o tracking do objeto desejado. Havará uma imagem do código e logo abaixo a explicação do que cada linha está fazendo.
 - main.py: https://github.com/Nagi0/CV-carro-autonomo-controle/blob/main/run/main.py
+![image](https://user-images.githubusercontent.com/75706345/206337008-c1a6d1ae-8c4a-4911-8515-d642b5c30b3c.png)
 - Usando a biblioteca MotorModule para criar um objeto da classe Motor que irá permitir controlar os motores conectados na ponte H;
 - Criando um objeto da classe da biblioteca que lê as teclas do teclado;
 - Leitura da câmera ligada ao Raspberry pi;
 - Definindo as configurações para gravar a imagem da câmera;
 - Valores do filtro de cor HSV;
 - Iniciando a variável erro anterior que será usada no P+I;
-![image](https://user-images.githubusercontent.com/75706345/206337008-c1a6d1ae-8c4a-4911-8515-d642b5c30b3c.png)
 
+![image](https://user-images.githubusercontent.com/75706345/206337094-8fb44795-bbb0-4698-915e-dc678476de3f.png)
 - A função a seguir controla os movimentos do carrinho de acordo com os objetos detectados na imagem;
 - Primeiro verifica-se se algum objeto foi detectado;
 - Caso ele seja, apenas o objeto com a maior área será considerado, isso reduz ruídos causados por cores no ambiente em volta;
@@ -131,8 +132,8 @@ Essa sessão irá cobrir como todos as bibliotecas criadas e baixadas anteriorme
 - É usada a biblioteca numpy (np.interp) para ajustar a saída do P+I para uma faixa de valores que o motor lê pela biblioteca MotorModule, esse valor foi normalizado em uma escala de 0 a 1. Será enviado para o motor o quanto deverá reduzir a rotação de um lado e aumentar para outro. Experimentalmente, constatou-se que a faixa máxima da saída do P+I deve ir de 0 a 0.45, mais do que isso o sistema pode ficar instável;
 - moveF(velocidade que o motor deve se mover para frente, valor que ele precisa virar ([+]direita, [-]esquerda), ciclo PWM)
 - O erro atual vira o erro anterior (prev_error = error);
-![image](https://user-images.githubusercontent.com/75706345/206337094-8fb44795-bbb0-4698-915e-dc678476de3f.png)
 
+![image](https://user-images.githubusercontent.com/75706345/206337150-7a88eb58-5e11-4719-9d2d-aa6dbb3aa787.png)
 Essa parte do código que irá chamar a função acima
 - Leitura da imagem da câmera
 - Lendo na image o contorno dos objetos que passaram pelo filtro
@@ -141,16 +142,15 @@ Essa parte do código que irá chamar a função acima
     - track_object(imagem que detecta contornos, contornos detectados, [Kp, Ki], erro anterior)
 - Caso o botão de gravar seja acionado pelo teclado a imagem da câmera começa a gravar
 - Mostra a imagem da câmera na tela
-![image](https://user-images.githubusercontent.com/75706345/206337150-7a88eb58-5e11-4719-9d2d-aa6dbb3aa787.png)
 
+![image](https://user-images.githubusercontent.com/75706345/206337192-9ed272a8-43d4-4b64-a82c-af8f2000c946.png)
 - Caso o ESC do teclado seja precionado, o código é encerrado
 - Caso o R do teclado seja precionado, a flag para gravar é ligada
 - Caso o S do teclado seja precionado, a gravação é interrompida e o vídeo é salvo no formato AVI (multiplos vídeos podem ser gravados em uma mesma execução do código)
-![image](https://user-images.githubusercontent.com/75706345/206337192-9ed272a8-43d4-4b64-a82c-af8f2000c946.png)
 
+![image](https://user-images.githubusercontent.com/75706345/206337241-f7be9755-7f99-4e8b-905e-e8a59995b29d.png)
 Controle manual do carrinho
 - As setas do teclado podem movimentar o carrinho da mesma forma que o P+I faz, usando o objeto criado a partir da classe Motor da biblioteca MotorModule.
-![image](https://user-images.githubusercontent.com/75706345/206337241-f7be9755-7f99-4e8b-905e-e8a59995b29d.png)
 
 # Conclusão
 Pode-se confirmar a eficássia de usar a visão computacional para o controle de sistemas dinâmicos, usando a câmera foi possível detectar objetos de cores desejadas, definir um set-point, usar algoritmos de controle para controlar os movimentos do carrinho, acessar remotamente o raspberry pi pela rede local, acionar os motores usando o teclado do computador, gravar a imagem da câmera e modelar os motores usando métodos matemáticos. Todas essas tarefas foram feitas com o auxilio da linguagem python, a linguagem C do arduino foi usada para unicamente ler a velocidade dos motores, que foram usadas na etapa de modelagem, e o software VNC permitiu o acesso remoto do raspberry pelo computador.

@@ -1,4 +1,7 @@
 # CV-carro-autonomo-controle
+O objetivo desse trabalho é fazer um carrinho que possa seguir um objeto usando uma câmera. Com o auxilio de algoritmos python de visão computacional foi possível detectar um objeto de uma cor escolhida arbitrariamente, também conseguiu-se quantificar o quão longe o objeto está do centro da câmera (no eixo X) e o quão distante ele está da câmera em geral. Com esses valores quantificados, utilizou-se um algoritmo de controle P+I incremental, analisando o erro passado com o erro atual para então obter uma saída que atue nos motores do carrinho visando centraliza-lo e aproima-lo do objeto. 
+
+Nesse trabalho também foi incluido uma forma de gravar a imagem da câmera do carrinho para o formato de vídeo AVI, assim, pode-se assistir a visão do carrinho depois que o código for encerrado; também foi implementado um controle manual pelo teclado do computador; além de uma forma de acessar a tela do sistema operacional do Raspberry pi em tempo real, remotamente, através da rede Wi-Fi, assim é possível ver tudo por outro dispositivo, sem precisar conectar o carrinho em nenhuma entrada de vídeo, permitindo-o mover livremente pelo ambiente.
 # Hardware e Softwares
 ## Hardware:
 - Raspberry pi 4 (Micro computador que roda o sistema operacional Raspian, uma distribuição do Linux);

@@ -51,7 +51,8 @@ import plotly.express as px
 - Os dados foram coletados usando os módulos MotorModule.py(que foi mencionada anteriormente) e outro código feito no python para ler a porta serial do Arduino chamado read_serial_data.py. Usando um arduino nano conectado na porta USB do raspberry pi e um encoder conectado a esse arduino nano, foi medida a velocidade e os insantes de tempo pelo arduino nano, com uma amostragem de 0.1 segundos. Esses dados foram então enviados ao raspberry pi pela comunicação serial. Finalmente, eles foram registrados em um arquivo CSV, que pode ser aberto no excel.
 
 - Código da comunicação Serial: https://github.com/Nagi0/CV-carro-autonomo-controle/tree/main/modelar%20motor
-Para fazer o motor girar e obter seus dados, foi implementado na biblioteca MotorModule.py (https://github.com/Nagi0/CV-carro-autonomo-controle/blob/main/run/MotorModule.py) os códigos da comunicação Serial, assim é possível acionar o motor e coletar seus dados. Essa função foi rodada apenas uma vez para obetr os dados de velocidade do motor, para então modelar a função transferência da planta.
+
+- Para fazer o motor girar e obter seus dados, foi implementado na biblioteca MotorModule.py (https://github.com/Nagi0/CV-carro-autonomo-controle/blob/main/run/MotorModule.py) os códigos da comunicação Serial, assim é possível acionar o motor e coletar seus dados. Essa função foi rodada apenas uma vez para obeter os dados de velocidade do motor, para então modelar a função transferência da planta.
 
 ![image](https://user-images.githubusercontent.com/75706345/206728584-d5b1bc13-7f3e-4434-9812-adc89827b08c.png)
 ![image](https://user-images.githubusercontent.com/75706345/206728665-63501617-6924-4df2-a533-701308b57722.png)
